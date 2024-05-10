@@ -2,11 +2,14 @@ import Header from './components/Header/Header.jsx'
 import CoreConceptsListItem from './components/CoreConceptsListItem/CoreConceptsListItem.jsx'
 import TabButtonListItem from "./components/TabButtonListItem/TabButtonListItem.jsx";
 import { CORE_CONCEPTS } from "./data.js";
+import React from "react";
 
 function App(){
-    let tabContent = 'Please click a tab button to show related example'
-    function handleSelect(buttonIndentity){
-        console.log(`${buttonIndentity} tab clicked`);
+
+    const [content, setContent] = React.useState('Please click a tab button to show related example.');
+    function handleSelect(selectedButton){
+        setContent(selectedButton);
+        console.log(`${selectedButton} tab clicked`);
     }
     return (
         <>
@@ -14,7 +17,7 @@ function App(){
             <main>
                 <h2>Core Concepts</h2>
                 <section id="core-concepts">
-                    {/* Display React core concepts in Ul with reusable list item component and props*/}
+                    {/* Display React core concepts in Ul with reusable list item component and props to customize each list item component */}
                     <ul>
                         {/* passing props using object bracket and dot notation*/}
                         <CoreConceptsListItem
@@ -37,7 +40,7 @@ function App(){
                         <TabButtonListItem onSelect={()=>{handleSelect('props')}}>Props</TabButtonListItem>
                         <TabButtonListItem onSelect={()=>{handleSelect('state')}}>State</TabButtonListItem>
                     </menu>
-                    {tabContent}
+                    {content}
                 </section>
             </main>
         </>
