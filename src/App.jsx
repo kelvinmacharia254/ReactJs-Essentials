@@ -65,7 +65,7 @@ export default App;
 	- It is commonly used in React.js applications to describe the structure of user interface components.
 	- The file have an extension.jsx
 	  Writing jsx markup: https://react.dev/learn/writing-markup-with-jsx
-	  e.g.The Header component is written in jsx so is the this file App.jsx.
+	  e.g.The Header component is written in jsx so is this file App.jsx.
 
 3. Props:
 
