@@ -4,12 +4,24 @@ import {EXAMPLES} from "../../data.js";
 
 export default function CoreConceptsExampleSection() {
 
-    const [content, setContent] = React.useState('Please click a tab button to show related example.');
+    const [content, setContent] = React.useState();
     function handleSelect(selectedButton){
-        let tabContent = EXAMPLES[selectedButton].code;
-        setContent(tabContent);
-        console.log(`${selectedButton} tab clicked`);
+        setContent(selectedButton);
     }
+
+    let tabContent = 'Please click a tab button to show related example.'
+    if(content){
+        tabContent =(
+            <div>
+                <h3>{EXAMPLES[content].title}</h3>
+                <p>{EXAMPLES[content].description}</p>
+                <pre>
+                    <code>{EXAMPLES[content].code}</code>
+                </pre>
+            </div>
+        )
+    }
+
 
     return (
         <section id="examples">
@@ -17,24 +29,26 @@ export default function CoreConceptsExampleSection() {
             <h2>Examples</h2>
             <menu>
                 <TabButtonListItem onSelect={() => {
-                    handleSelect('components')
-                }}>Components</TabButtonListItem>
+                    handleSelect('components')}}>
+                    Components
+                </TabButtonListItem>
                 <TabButtonListItem onSelect={() => {
                     handleSelect('jsx')
-                }}>Jsx</TabButtonListItem>
+                }}>
+                    Jsx
+                </TabButtonListItem>
                 <TabButtonListItem onSelect={() => {
                     handleSelect('props')
-                }}>Props</TabButtonListItem>
+                }}>
+                    Props
+                </TabButtonListItem>
                 <TabButtonListItem onSelect={() => {
                     handleSelect('state')
-                }}>State</TabButtonListItem>
+                }}>
+                    State
+                </TabButtonListItem>
             </menu>
-            <pre>
-                <code>
-                   {content}
-                </code>
-            </pre>
-
+            {tabContent}
         </section>
     )
 }
