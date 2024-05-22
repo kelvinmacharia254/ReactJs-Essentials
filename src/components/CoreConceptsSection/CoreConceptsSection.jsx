@@ -7,16 +7,9 @@ export default function CoreConceptsSection(){
         <section id="core-concepts">
             {/* Display React core concepts in Ul with reusable list item component. Use props to pass contextual info to each list item component */}
             <ul>
-                {/* passing props using object bracket and dot notation*/}
-                <CoreConceptsListItem
-                    title={CORE_CONCEPTS[0].title}
-                    description={CORE_CONCEPTS[0].description}
-                    image={CORE_CONCEPTS[0].image}
-                />
-                {/*  pass props using spread operator */}
-                <CoreConceptsListItem {...CORE_CONCEPTS[1]} />
-                <CoreConceptsListItem {...CORE_CONCEPTS[2]} />
-                <CoreConceptsListItem {...CORE_CONCEPTS[3]} />
+                {/* Use .map() method to create list items and pass props with spread operator */}
+                {/* .maps() method reduce code*/}
+                {CORE_CONCEPTS.map((conceptItem) =>(<CoreConceptsListItem {...conceptItem}/>))}
             </ul>
         </section>
     );
